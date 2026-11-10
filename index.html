@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102c46">
+<title>SIPETA ZNT | Kabupaten Klungkung</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+ <a class="brand" href="#"><span class="brand-logo">Z</span><span><strong>SIPETA <em>ZNT</em></strong><small>Sistem Informasi Peta Zona Nilai Tanah</small></span></a>
+ <div class="header-right"><span class="status-indicator" id="dot"></span><span id="connectionText">Menunggu koneksi layanan</span><button id="refreshBtn" class="icon-btn" title="Uji ulang koneksi">↻</button></div>
+</header>
+<main>
+ <section class="hero"><div><div class="kicker">SISTEM INFORMASI GEOSPASIAL · ATR/BPN</div><h1>Peta Zona Nilai Tanah</h1><p>Eksplorasi informasi Zona Nilai Tanah Kabupaten Klungkung melalui layanan peta WMS.</p></div><div class="hero-tag"><span>●</span> KLUNGKUNG, BALI</div></section>
+ <section class="layout">
+  <aside class="panel">
+   <div class="panel-title"><div><span class="kicker">PANEL KONTROL</span><h2>Pengaturan peta</h2></div><span class="panel-icon">☷</span></div>
+   <div class="field"><label for="serviceUrl">Endpoint layanan WMS</label><input id="serviceUrl" spellcheck="false" value="isi dengan kode WMS"></div>
+   <button id="connectBtn" class="primary-btn">Hubungkan ke ATR/BPN <span>→</span></button>
+   <div id="status" class="notice neutral"><b>●</b><span>Siap memeriksa layanan WMS.</span></div>
+   <div class="section-divider"></div>
+   <div class="subhead"><div><span class="kicker">KONTEN PETA</span><h3>Layer ZNT</h3></div><button id="loadLayers" class="link-btn">Muat ulang</button></div>
+   <div id="layers" class="layer-list"><div class="placeholder">Daftar layer akan muncul setelah layanan berhasil terhubung.</div></div>
+   <div class="section-divider"></div>
+   <div class="field"><label for="basemap">Peta dasar</label><select id="basemap"><option value="osm">OpenStreetMap</option><option value="gray">Peta terang</option><option value="sat">Citra satelit</option></select></div>
+   <div class="section-divider"></div>
+   <div class="subhead"><div><span class="kicker">NAVIGASI</span><h3>Ke koordinat</h3></div></div>
+   <div class="coordinates"><input id="lat" inputmode="decimal" placeholder="Latitude" value="-8.535"><input id="lng" inputmode="decimal" placeholder="Longitude" value="115.405"></div>
+   <button id="goCoord" class="secondary-btn">Tampilkan lokasi</button>
+   <div class="panel-foot">Masukan kode titik koordinat yang diinginkan</div>
+  </aside>
+  <section class="map-card">
+   <div id="map"></div>
+   <div class="map-top"><div class="map-label"><span class="map-pin">⌖</span><span><b>Kabupaten Klungkung</b><small>Wilayah pemetaan</small></span></div><div class="map-actions"><button id="zoomKl" title="Fokus Klungkung">⌖</button><button id="fullScreen" title="Layar penuh">⛶</button></div></div>
+   <div class="map-bottom"><div class="legend"><b>Legenda layer</b><span><i></i> Simbolisasi mengikuti layanan WMS</span></div><div class="scale-note">Klik area peta untuk identifikasi data</div></div>
+   <div id="mapMessage" class="map-message">Hubungkan layanan untuk menampilkan layer Zona Nilai Tanah.</div>
+  </section>
+ </section>
+ <section class="tips"><article><span class="tip-icon">⌖</span><div><b>Identifikasi lokasi</b><p>Pilih layer, lalu klik area peta untuk meminta atribut dari layanan jika tersedia.</p></div></article><article><span class="tip-icon">▦</span><div><b>Data dari sumber</b><p>Aplikasi menampilkan Informasi mengikuti data yang dikirim server ATR/BPN.</p></div></article><article><span class="tip-icon">ⓘ</span><div><b>Kendala akses</b><p>Jika gagal, periksa CORS, autentikasi, izin penggunaan, dan dukungan operasi WMS.</p></div></article></section>
+ <footer><b>SIPETA ZNT</b> <span>·</span> Antarmuka pemetaan Zona Nilai Tanah Kabupaten Klungkung <span class="footer-right">Copyright 2026 Putu Satya</span></footer>
+</main>
+<div id="modal" class="modal hidden"><div class="dialog"><button id="closeModal" class="close">×</button><div class="kicker">HASIL IDENTIFIKASI</div><h2>Informasi titik peta</h2><div id="featureInfo" class="feature-content">Mengambil informasi dari layanan…</div></div></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="app.js"></script>
+</body></html>
